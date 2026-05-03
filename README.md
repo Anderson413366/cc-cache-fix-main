@@ -16,6 +16,13 @@ The pinned npm dependency is exact-version controlled because the patcher works 
 
 This repository is a local CLI toolkit, not a web app. GitHub is the correct distribution target today. Vercel and Supabase are documented as future paths only if a hosted dashboard or shared telemetry service is added later.
 
+## Latest Changes Applied
+
+- App identity is now consistently aligned to `cc-cache-fix-main` across deployment docs.
+- macOS installer now installs/runs against the local repo path (fixes hardcoded `~/cc-cache-fix` behavior).
+- Supabase usage remains future-ready only; no active schema/object changes were made for this release.
+- Documentation set was updated to reflect all cleanup, verification, and deployment-readiness decisions.
+
 ## Quick Start
 
 Linux:
@@ -91,6 +98,18 @@ bash -n install.sh
 bash -n install-mac.sh
 bash -n smoke_check.sh
 npm audit --prefix node --omit=dev
+```
+
+## Latest Verified Checks
+
+Run during the latest cleanup pass:
+
+```bash
+npm ci --prefix node --ignore-scripts
+npm audit --prefix node --omit=dev
+python3 -m py_compile patches/apply-patches.py test_cache.py usage_audit.py tracker/collector.py tracker/dashboard.py tracker/db.py
+python3 -m unittest discover -s tests
+bash -n install.sh install-mac.sh smoke_check.sh install-windows.ps1
 ```
 
 ## Documentation

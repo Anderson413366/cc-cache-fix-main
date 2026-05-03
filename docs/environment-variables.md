@@ -9,6 +9,12 @@ This project is a local CLI toolkit. It does not need environment variables to i
 | `ANTHROPIC_API_KEY` | Optional | Private local/server | Used by `test_cache.py` if Claude local auth is not already configured. Never commit it. |
 | `CC_CACHE_FIX_CLAUDE_VERSION` | Optional | Local installer | Overrides `SUPPORTED_CLAUDE_CODE_VERSION` for manual compatibility testing. Use carefully because patch signatures are version-sensitive. |
 
+### Current Deployment Pass Notes
+
+- This release has no active backend env usage beyond optional `ANTHROPIC_API_KEY`/`CC_CACHE_FIX_CLAUDE_VERSION`.
+- No Supabase environment variables are required for runtime in this local-only toolkit release.
+- Future-ready variables are documented but not wired to active code paths.
+
 ## Future-Ready Variables, Not Active
 
 These are documented for a future hosted dashboard or team telemetry service. They are not consumed by current code.

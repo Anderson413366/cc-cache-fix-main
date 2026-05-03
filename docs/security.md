@@ -28,3 +28,9 @@ If a hosted dashboard is added later:
 - keep service keys server-side,
 - do not expose local transcript paths or raw prompts by default,
 - add authentication before shared telemetry is viewable.
+
+## Changes Captured in Latest Docs Sync
+
+- Confirmed and documented that this release has no active backend secrets, auth service, or Supabase writes.
+- Reinforced local-only model in docs and kept `SUPABASE_SERVICE_ROLE_KEY` explicitly marked as future server-only only.
+- No dependency or configuration changes were introduced; install and patch integrity checks were kept unchanged.

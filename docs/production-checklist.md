@@ -17,6 +17,7 @@
 - Treat inconclusive cache tests as failures until rerun successfully.
 - Review GitHub advisories for `@anthropic-ai/claude-code`.
 - Verify Windows installer behavior on a Windows machine before advertising Windows support as fully validated.
+- Confirm macOS installer path resolution is repo-relative (no hardcoded `~/cc-cache-fix` dependency).
 
 ## Future Hosted Dashboard Checklist
 
@@ -25,3 +26,11 @@
 - Enable RLS before exposing any table to clients.
 - Add auth before private session or team telemetry is visible online.
 - Keep transcript content opt-in and avoid collecting secrets from local sessions.
+
+## Latest Sync Verification Completed
+
+- `npm ci --prefix node --ignore-scripts`
+- `npm audit --prefix node --omit=dev --audit-level=high`
+- `python3 -m py_compile patches/apply-patches.py test_cache.py usage_audit.py tracker/collector.py tracker/dashboard.py tracker/db.py`
+- `python3 -m unittest discover -s tests`
+- `bash -n install.sh install-mac.sh smoke_check.sh install-windows.ps1`

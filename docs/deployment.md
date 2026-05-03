@@ -92,6 +92,23 @@ bash -n smoke_check.sh
 npm audit --prefix node --omit=dev
 ```
 
+## Work Completed in the Latest Sync
+
+### Cleanup & Sync Changes
+
+- GitHub and deployment documentation now consistently uses the `cc-cache-fix-main` slug.
+- `install-mac.sh` was fixed to run from the repo directory (`SCRIPT_DIR`) and use `node/node_modules`, replacing the hardcoded `~/cc-cache-fix` path assumption.
+- Repository deployment posture is explicitly set as local-only toolkit, so Vercel is still deferred until a web dashboard is introduced.
+- Supabase remains future-ready only; no active Supabase objects were created/modified in this release.
+
+### Cleanup Verification Run (latest)
+
+- `npm ci --prefix node --ignore-scripts`
+- `npm audit --prefix node --omit=dev --audit-level=high`
+- `python3 -m py_compile patches/apply-patches.py test_cache.py usage_audit.py tracker/collector.py tracker/dashboard.py tracker/db.py`
+- `python3 -m unittest discover -s tests`
+- `bash -n install.sh install-mac.sh smoke_check.sh`
+
 Run the live smoke check only when Claude auth and API cost are acceptable:
 
 ```bash

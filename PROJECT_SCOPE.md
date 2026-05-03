@@ -33,3 +33,8 @@
 - Status: Complete
 - Goal: Remove generated artifacts, duplicate patching code, and version-sensitive dependency risk.
 - Outcome: Removed stale local results and duplicate patcher, updated the pinned runtime to `2.1.84`, added tests/docs/CI, and documented future backend posture.
+
+### 2.4 Documentation Consolidation and Post-Deploy Sync
+- Status: Complete
+- Goal: Update all documentation artifacts with identity alignment, installer hardening, and verification outcomes.
+- Outcome: Updated README and all docs (`docs/*`) for `cc-cache-fix-main` identity consistency, mac installer fix, local-only deployment posture, and latest validation commands/results.

@@ -45,3 +45,12 @@ Do not store transcript text by default. If transcript upload is added later, ma
 4. Add authentication before shared telemetry is visible online.
 5. Add server-only jobs for privileged operations.
 6. Add environment variables only to the app-specific deployment target.
+
+## Completed Work Snapshot (2026-05-03)
+
+- Verified deployment scope and kept this release strictly local-only (no hosted API, no RLSed schema, no auth service dependency).
+- Preserved a clean future path with explicit namespace plan:
+  - `app_cc_cache_fix_main`
+  - `app_cc_cache_fix_main_private` (optional later)
+  - `cc_cache_fix_main`
+- Confirmed local persistence remains `tracker/cache_tracker.db` only (ignored by `.gitignore`) and is not part of Supabase active data yet.

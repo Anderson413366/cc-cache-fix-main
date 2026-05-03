@@ -25,6 +25,11 @@ Use this namespace if Supabase is activated later:
 The Playground project is currently reused for multiple apps (per existing project convention).
 No active schema, table, bucket, function, or auth changes were made for this app yet.
 
+## Deployment-Documentation Sync (Latest Pass)
+
+- Namespace references were aligned to `cc-cache-fix-main` / `app_cc_cache_fix_main`.
+- Documentation now states the exact non-breaking posture: future-ready only, no active Supabase objects created in this release.
+
 ## Safe Future Migration Pattern
 
 Use idempotent, app-scoped migrations only:
