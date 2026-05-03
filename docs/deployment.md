@@ -38,7 +38,7 @@ python3 test_cache.py claude-patched --timeout 240 --debug-transcript
 
 ## GitHub Setup
 
-Recommended repository name: `claude-code-cache-fix`.
+Recommended repository name: `cc-cache-fix-main`.
 
 Commit:
 

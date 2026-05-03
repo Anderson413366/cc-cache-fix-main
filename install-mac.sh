@@ -8,8 +8,8 @@ set -euo pipefail
 # Uses patches/apply-patches.py which has regex + semantic fallbacks
 # for reliable patching across different minified code versions.
 
-BASE="$HOME/cc-cache-fix"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+BASE="$SCRIPT_DIR"
 PATCH_SCRIPT="$SCRIPT_DIR/patches/apply-patches.py"
 VERSION_FILE="$SCRIPT_DIR/SUPPORTED_CLAUDE_CODE_VERSION"
 
@@ -59,10 +59,10 @@ mkdir -p "$BASE"
 cd "$BASE"
 
 # Install npm package
-CLI="$BASE/node_modules/@anthropic-ai/claude-code/cli.js"
+CLI="$BASE/node/node_modules/@anthropic-ai/claude-code/cli.js"
 if [ ! -f "$CLI" ]; then
     echo "[*] Installing @anthropic-ai/claude-code@${VERSION}..."
-    npm install --no-save --ignore-scripts "@anthropic-ai/claude-code@${VERSION}"
+    npm install --prefix "$BASE/node" --no-save --ignore-scripts "@anthropic-ai/claude-code@${VERSION}"
 else
     echo "[*] cli.js already installed"
 fi
@@ -102,7 +102,7 @@ fi
 cat > "$WRAPPER" << WRAPPER_EOF
 #!/usr/bin/env bash
 export CC_CACHE_FIX_MODE="patched"
-exec node "$BASE/node_modules/@anthropic-ai/claude-code/cli.js" "\$@"
+exec node "$BASE/node/node_modules/@anthropic-ai/claude-code/cli.js" "\$@"
 WRAPPER_EOF
 chmod +x "$WRAPPER"
 echo "[*] Created ~/.local/bin/claude-patched"
